@@ -1,0 +1,16 @@
+version: '1'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+  db:
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes" # for development only
+    volumes:
+      - db_data:/nuxt-app/db
+
+volumes:
+  db_data:

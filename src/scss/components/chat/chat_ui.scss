@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+$font: 'Lato', sans-serif;
+
+$accent: hsl(246, 83%, 67%);
+$font: 'Lato', sans-serif;
+$secondary: hsl(184, 70%, 54%);
+$white: #F9FBFF;
+$dark: #777777;
+$primary: #5a86e4;
+
+.chat {
+  position: fixed;
+  bottom: 2%;
+  z-index: 5;
+  left: 2%;
+
+  .chat-button {
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+      transition: all .3s ease-in-out;
+    }
+  }
+}
+
+.chat_container {
+  position: absolute;
+
+  height: 50vh;
+  height: 50dvh;
+
+  bottom: 0;
+  border-radius: 10px 0 0 10px;
+
+  box-shadow: -5px 5px 10px rgba($dark, .5);
+
+  backdrop-filter: blur(8px);
+  background: linear-gradient(to bottom left, hsl(221, 72%, 62%, 0.3) 20%, hsl(184, 70%, 54%, 0.3) 100%);
+
+  z-index: 100;
+
+  .message-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 400px;
+    overflow-y: scroll;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+}
+
+.messages {
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+  height: fit-content;
+
+  > :last-child {
+    margin-bottom: 5px;
+  }
+
+  .profile {
+    width: 100%;
+    height: 10%;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .people {
+    list-style-type: none;
+    line-height: 0.7em;
+    width: 100%;
+    overflow-y: scroll;
+    height: 90%;
+    padding-top: 10px;
+
+    .chat_title {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $dark;
+      font-size: 0.9rem;
+    }
+
+    .time {
+      color: $dark;
+      position: absolute;
+      right: 10px;
+      margin-top: 2px;
+      font-size: 0.7rem;
+    }
+
+    .preview {
+      color: $primary;
+      font-size: 0.65rem;
+    }
+  }
+}
+
+.user-profile {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.close-chat {
+  border: none;
+  outline: none;
+  background: unset;
+  border-radius: 0;
+  position: absolute;
+  right: 10px;
+  margin-right: 40px;
+  margin-left: auto;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+
+  .ex {
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 4px;
+      background: $white;
+      top: 50%;
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+
+    &:before {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+
+.person {
+  padding: 12px 0 12px 12px;
+  border-bottom: 1px solid $primary;
+  cursor: pointer;
+  border-radius: 10px 10px 0 10px;
+
+  &:hover {
+    background: $white;
+    transition: all .3s ease-in-out;
+  }
+}
+
+.chat_focus {
+  background: $white;
+  margin-left: 1px;
+}
+
+.user-name {
+  text-transform: uppercase;
+  color: $primary;
+  letter-spacing: 2px;
+  font-weight: 500;
+
+  &:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: $primary;
+    top: 50px;
+    left: 0;
+  }
+}
+
+.email {
+  color: $white;
+  margin-left: -30px;
+  margin-top: 2px;
+}
+
+.chat_box {
+  position: absolute;
+
+  height: 50vh;
+  height: 50dvh;
+
+  bottom: 0;
+}
+
+.top-bar {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 1rem;
+
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(to bottom left, $primary 20%, $secondary 100%);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+
+    p {
+      color: $white;
+      margin: 7px 12px;
+    }
+  }
+
+  .name {
+    text-transform: uppercase;
+    color: $dark;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+
+  .chat_menu {
+    margin-left: auto;
+    height: 20px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all .3s ease-in;
+    }
+  }
+
+}
+
+.dots {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: $primary;
+  box-shadow: 0px 7px 0px $primary, 0px 14px 0px $primary;
+}
+
+.middle {
+  background: linear-gradient(to bottom left, $primary 20%, $secondary 100%);
+  height: 85%;
+  padding-top: 0.5rem;
+
+  overflow-y: scroll;
+}
+
+.incoming {
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  margin-left: 0.5rem;
+  align-self: flex-start;
+
+  &.bubble {
+    background: lighten($dark, 23%);
+  }
+}
+
+.typing {
+  padding: 8px 13px 9px 13px;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  background: lighten($dark, 50%);
+}
+
+
+.ellipsis {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: $white;
+  border-radius: 50%;
+  animation: bounce 1.3s linear infinite;
+}
+
+.one {
+  animation-delay: 0.6s;
+}
+
+.two {
+  animation-delay: 0.5s;
+}
+
+.three {
+  animation-delay: 0.8s;
+}
+
+.bubble {
+  position: relative;
+  color: $white;
+  border-radius: 20px;
+
+  max-width: 80%;
+  max-height: fit-content;
+}
+
+.outgoing {
+  padding: 20px;
+  height: 100%;
+  align-self: flex-end;
+
+  &.bubble {
+    background: $primary;
+  }
+}
+
+
+.bottom-bar {
+  width: 100%;
+  background: $white;
+  border-radius: 0 0 10px 10px;
+
+  .text {
+    padding: 0.5em 1em;
+    font-size: 0.8rem;
+    position: relative;
+
+    .chat_button {
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.chat_input {
+  padding: 7px;
+  border: 0;
+  background: $white;
+  color: $primary;
+}
+
+.chat_input::placeholder {
+  color: $secondary;
+}
+
+.chat_input:focus {
+  color: $dark;
+  outline: 0;
+}
+
+.chat_button {
+  all: unset;
+  color: $secondary;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all .3s ease-in-out;
+    color: $primary;
+  }
+}
+
+
+.chat_footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+
+  p {
+    color: $primary;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+}
+
+
+@keyframes bounce {
+  30% {
+    transform: translateY(-2px);
+  }
+  60% {
+    transform: translateY(0px);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+}
+

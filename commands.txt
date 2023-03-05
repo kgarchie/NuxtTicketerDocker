@@ -1,0 +1,19 @@
+# Nuxt nuxi
+npx nuxi init NuxtTicketerDocker
+yarn add @nuxtjs/bulma concurrently @nuxtjs/axios
+# Prisma
+yarn add --save-dev prisma typescript ts-node @types/node nodemon
+yarn prisma init --datasource-provider mysql
+yarn nuxt prepare
+yarn prisma format
+yarn prisma migrate dev --name init
+yarn prisma generate
+yarn add @prisma/client
+
+# docker
+docker build -t kgarchie/nuxt-ticketer:1.0 .
+docker run -p 3000:3000 kgarchie/nuxt-ticketer:1.0
+
+# types
+yarn add @types/ws
+yarn add @types/uuid

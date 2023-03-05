@@ -1,0 +1,481 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: hsl(246, 83%, 67%);
+  --font: "Lato", sans-serif;
+  --secondary: hsl(184, 70%, 54%);
+  --white: #F9FBFF;
+  --dark: #777777;
+}
+
+.chat {
+  position: fixed;
+  bottom: 2%;
+  z-index: 5;
+  left: 2%;
+}
+.chat .chat-button {
+  opacity: 0.5;
+}
+.chat .chat-button:hover {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat_container {
+  position: absolute;
+  height: 50vh;
+  height: 50dvh;
+  bottom: 0;
+  border-radius: 10px 0 0 10px;
+  box-shadow: -5px 5px 10px rgba(119, 119, 119, 0.5);
+  backdrop-filter: blur(8px);
+  background: linear-gradient(to bottom left, hsla(221, 72%, 62%, 0.3) 20%, hsla(184, 70%, 54%, 0.3) 100%);
+  z-index: 100;
+}
+.chat_container .message-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 400px;
+  overflow-y: scroll;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.messages {
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+  height: fit-content;
+}
+.messages > :last-child {
+  margin-bottom: 5px;
+}
+.messages .profile {
+  width: 100%;
+  height: 10%;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.messages .people {
+  list-style-type: none;
+  line-height: 0.7em;
+  width: 100%;
+  overflow-y: scroll;
+  height: 90%;
+  padding-top: 10px;
+}
+.messages .people .chat_title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #777777;
+  font-size: 0.9rem;
+}
+.messages .people .time {
+  color: #777777;
+  position: absolute;
+  right: 10px;
+  margin-top: 2px;
+  font-size: 0.7rem;
+}
+.messages .people .preview {
+  color: #5a86e4;
+  font-size: 0.65rem;
+}
+
+.user-profile {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.close-chat {
+  border: none;
+  outline: none;
+  background: unset;
+  border-radius: 0;
+  position: absolute;
+  right: 10px;
+  margin-right: 40px;
+  margin-left: auto;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+.close-chat .ex:after, .close-chat .ex:before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: #F9FBFF;
+  top: 50%;
+}
+.close-chat .ex:after {
+  transform: rotate(45deg);
+}
+.close-chat .ex:before {
+  transform: rotate(-45deg);
+}
+
+.person {
+  padding: 12px 0 12px 12px;
+  border-bottom: 1px solid #5a86e4;
+  cursor: pointer;
+  border-radius: 10px 10px 0 10px;
+}
+.person:hover {
+  background: #F9FBFF;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat_focus {
+  background: #F9FBFF;
+  margin-left: 1px;
+}
+
+.user-name {
+  text-transform: uppercase;
+  color: #5a86e4;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+.user-name:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #5a86e4;
+  top: 50px;
+  left: 0;
+}
+
+.email {
+  color: #F9FBFF;
+  margin-left: -30px;
+  margin-top: 2px;
+}
+
+.chat_box {
+  position: absolute;
+  height: 50vh;
+  height: 50dvh;
+  bottom: 0;
+}
+
+.top-bar {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  background-color: #F9FBFF;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 1rem;
+}
+.top-bar .avatar {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(to bottom left, #5a86e4 20%, hsl(184, 70%, 54%) 100%);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.top-bar .avatar p {
+  color: #F9FBFF;
+  margin: 7px 12px;
+}
+.top-bar .name {
+  text-transform: uppercase;
+  color: #777777;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+.top-bar .chat_menu {
+  margin-left: auto;
+  height: 20px;
+  cursor: pointer;
+}
+.top-bar .chat_menu:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in;
+}
+
+.dots {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #5a86e4;
+  box-shadow: 0px 7px 0px #5a86e4, 0px 14px 0px #5a86e4;
+}
+
+.middle {
+  background: linear-gradient(to bottom left, #5a86e4 20%, hsl(184, 70%, 54%) 100%);
+  height: 85%;
+  padding-top: 0.5rem;
+  overflow-y: scroll;
+}
+
+.incoming {
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  margin-left: 0.5rem;
+  align-self: flex-start;
+}
+.incoming.bubble {
+  background: #b2b2b2;
+}
+
+.typing {
+  padding: 8px 13px 9px 13px;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  background: #f7f7f7;
+}
+
+.ellipsis {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #F9FBFF;
+  border-radius: 50%;
+  animation: bounce 1.3s linear infinite;
+}
+
+.one {
+  animation-delay: 0.6s;
+}
+
+.two {
+  animation-delay: 0.5s;
+}
+
+.three {
+  animation-delay: 0.8s;
+}
+
+.bubble {
+  position: relative;
+  color: #F9FBFF;
+  border-radius: 20px;
+  max-width: 80%;
+  max-height: fit-content;
+}
+
+.outgoing {
+  padding: 20px;
+  height: 100%;
+  align-self: flex-end;
+}
+.outgoing.bubble {
+  background: #5a86e4;
+}
+
+.bottom-bar {
+  width: 100%;
+  background: #F9FBFF;
+  border-radius: 0 0 10px 10px;
+}
+.bottom-bar .text {
+  padding: 0.5em 1em;
+  font-size: 0.8rem;
+  position: relative;
+}
+.bottom-bar .text .chat_button {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.chat_input {
+  padding: 7px;
+  border: 0;
+  background: #F9FBFF;
+  color: #5a86e4;
+}
+
+.chat_input::placeholder {
+  color: hsl(184, 70%, 54%);
+}
+
+.chat_input:focus {
+  color: #777777;
+  outline: 0;
+}
+
+.chat_button {
+  all: unset;
+  color: hsl(184, 70%, 54%);
+  cursor: pointer;
+}
+.chat_button:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+  color: #5a86e4;
+}
+
+.chat_footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+}
+.chat_footer p {
+  color: #5a86e4;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.chat_footer a {
+  color: #F9FBFF;
+  text-decoration: none;
+}
+.chat_footer a:hover {
+  color: hsl(184, 70%, 54%);
+}
+
+@keyframes bounce {
+  30% {
+    transform: translateY(-2px);
+  }
+  60% {
+    transform: translateY(0px);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+}
+nav.navbar {
+  border-top: 4px solid #276cda;
+  margin-bottom: 1rem;
+}
+
+.navbar-item.brand-text {
+  font-weight: 300;
+}
+
+.navbar-item, .navbar-link {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.columns {
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+}
+
+.menu-label {
+  color: #8F99A3;
+  letter-spacing: 1.3;
+  font-weight: 700;
+}
+
+.menu-list a {
+  color: #0F1D38;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.menu-list a:hover {
+  background-color: transparent;
+  color: #276cda;
+}
+
+.menu-list a.is-active {
+  background-color: transparent;
+  color: #276cda;
+  font-weight: 700;
+}
+
+.card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  margin-bottom: 2rem;
+}
+
+.card-header-title {
+  color: #8F99A3;
+  font-weight: 400;
+}
+
+.info-tiles {
+  margin: 1rem 0;
+}
+
+.info-tiles .subtitle {
+  font-weight: 300;
+  color: #8F99A3;
+}
+
+.hero.welcome.is-info {
+  background: #36D1DC;
+  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
+  background: linear-gradient(to right, #5B86E5, #36D1DC);
+}
+
+.hero.welcome .title, .hero.welcome .subtitle {
+  color: hsl(192, 17%, 99%);
+}
+
+.card .content {
+  font-size: 14px;
+}
+
+.card-footer-item {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8F99A3;
+}
+
+.card-table .table {
+  margin-bottom: 0;
+}
+
+.events-card .card-table {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+input.is-large {
+  padding-left: 0;
+}
+
+.table.is-truncated {
+  width: 100%;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+.table.is-truncated td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table.is-truncated td:first-child {
+  text-overflow: clip;
+}
+
+.not_active {
+  visibility: hidden;
+  cursor: unset;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=style.css.map */
